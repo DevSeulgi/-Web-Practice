@@ -1,0 +1,30 @@
+/* User Agent Stylesheet Reset */
+body,
+h1,
+p {
+  margin: 0;
+}
+
+/* Typography */
+h1 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+/* Colors */
+:root {
+  --background-color: midnightblue;
+  --normal-color: dodgerblue;
+}
+
+/* Layouts */
+.wrapper {
+  width: 960px;
+  margin: 0 auto;
+}
+
+/* Components */
+body {
+  background-color: var(--background-color);
+  color: var(--normal-color);
+}
