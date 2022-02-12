@@ -1,12 +1,24 @@
 /* User Agent Stylesheet Reset */
-body,
-h1,
-p {
+body, h1, h2, ol, p {
   margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style-type: none;
 }
 
 /* Typography */
-h1 {
+:root {
+  font-size: 62.5%; /* 16px > 10px */
+  /* 사용자가 브라우저에서 크기를 바꿀 경우를 생각해서 %로 지정 */
+}
+
+body {
+  font-size: 1.4rem; /* 14px 브라우저 설정을 바꾸면 바뀔 수 있음 */
+}
+
+h1, h2 {
   font-size: inherit;
   font-weight: inherit;
 }
@@ -15,16 +27,168 @@ h1 {
 :root {
   --background-color: midnightblue;
   --normal-color: dodgerblue;
+  --primary-color: lightgreen;
+  --secondary-color: salmon;
+  --light-color: skyblue;
 }
 
 /* Layouts */
 .wrapper {
-  width: 960px;
+  width: auto;
+  max-width: 1200px;
   margin: 0 auto;
+  padding: 0 2rem;
 }
 
 /* Components */
 body {
   background-color: var(--background-color);
   color: var(--normal-color);
+}
+
+.header {
+  display: flex;
+  padding: 2rem 0;
+  align-items: center;
+  /* 기본값은 stretch; */
+}
+
+.header-title {
+  font-size: 8rem;
+  font-family: 'Gugi', cursive;
+  line-height: 1;
+  color: var(--secondary-color)
+}
+
+.header-title strong {
+  display: block;
+  color: var(--primary-color)
+}
+
+.header-meta {
+  font-size: 2rem;
+  /* 
+  .header {
+  align-items: center; 
+  } 대체 가능 방법 
+  margin-top: auto;
+  margin-bottom: auto; */
+  display: flex;
+  align-items: center;
+}
+
+.header-meta::before {
+  content: '';
+  background-color: currentColor;
+  /* currentColor 부모의 color를 받아옴 */
+  width: 2em;
+  height: 2px;
+  margin: 0 2em;
+}
+
+.timeline li {
+  border-radius: 8px;
+}
+
+/* even은 짝수번째 odd는 홀수번째 선택 */
+.timeline li:nth-of-type(even) {
+  background-color: rgba(0,0,0,0.2);
+  box-shadow: inset 0 0 20px rgba(0,0,0,0.2);
+}
+
+.parts {
+  padding: 2rem 0;
+  display: flex;
+  align-items: center;
+}
+
+.parts_lunch {
+  padding: 4rem 0;
+  margin: 4rem 0;
+}
+
+.parts_lunch .parts-agenda h2 {
+  color: var(--secondary-color);
+}
+
+.parts-times {
+  width: 30%;
+  max-width: 14em;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  color: var(--light-color)
+}
+
+.parts-times span {
+  margin : 0 0.2em;
+}
+
+.parts-contents {
+  display: flex;
+  align-items: center;
+}
+
+.parts-profile {
+  width: 80px;
+  height: 80px;
+  border-radius: 4px 50% 50% 4px
+}
+
+.parts-agenda {
+  padding: 0 2.4rem;
+  font-size: 2rem;
+}
+
+.parts-agenda p {
+  margin: 8px 0;
+  color: var(--secondary-color);
+  display: flex;
+  align-items: center;
+}
+
+.parts-agenda h2 {
+  color: var(--primary-color);
+  font-size: 3.2rem;
+  line-height: 1.1;
+}
+
+.parts-role {
+  color: var(--normal-color);
+  display: flex;
+  align-items: center;
+}
+
+.parts-role::before {
+  content: ' ';
+  width: 0.3em;
+  height: 0.3em;
+  margin: 0 0.6em;
+  border-radius: 50%;
+  background-color: currentColor;
+}
+
+@media (max-width: 720px) {
+  .header {
+    display: block;
+  }
+  .header-meta {
+    display: block;
+  }
+  .header-meta::before {
+    display: block;
+    margin: 2rem 0;
+  }
+  .parts-times {
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(0,0,0,0.6);
+    padding: 1rem 0;
+    border-radius: 0 40% 40% 0;
+    width: 6em;
+    align-items: flex-start;
+  }
+  .parts-profile {
+    display: none;
+  }
 }
